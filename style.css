@@ -1,0 +1,19 @@
+/* CSS Reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the page horizontally */
+  align-items: center; /* Center the page vertically */
+  font-family: 'Lato', sans-serif;
+}
+
+#timer {
+  font-size: 50px;
+}
