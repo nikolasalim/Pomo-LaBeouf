@@ -2,6 +2,7 @@ let countdown;
 const startBtn = document.getElementById("1500");
 const stopBtn = document.getElementById("stop");
 let isOn = false;
+let remaining;
 
 function timer(seconds){
     const now = Date.now();
@@ -17,6 +18,9 @@ function timer(seconds){
             return;
         }
         displayTimeLeft(Math.round(secondsLeft));
+        
+        remaining = Math.round(secondsLeft)
+
     }, 1000)
 } 
 
@@ -30,7 +34,9 @@ function displayTimeLeft(seconds){
 
 //timer(15);
 
-function start() {
+// Timer Buttons
+
+function startTimer() {
     const seconds = this.id;
     timer(seconds)
     isOn = true;
@@ -39,20 +45,34 @@ function start() {
 function stop() {
     clearInterval(countdown)
     stopBtn.innerHTML = 'resume';
+    isOn = false;
 };
 
-/* function resumeTimer(){
-    timer(15)
+function resume() {
+    stopBtn.innerHTML = 'stop';
+    isOn = true;
+    timer(remaining)
+};
 
-    stopBtn.innerHTML = 'stop'
-    stopBtn.addEventListener('click', startTimer)
-}; */
-
-startBtn.addEventListener('click', start)
-//stopBtn.addEventListener('click', stopTimer)
-
-
+startBtn.addEventListener('click', startTimer)
 
 stopBtn.addEventListener('click', function() {
-    isOn ? stop() : start();
+    isOn ? stop() : resume();
   });
+
+
+/* function stop() {
+    clearInterval(countdown)
+    stopBtn.innerHTML = 'resume';
+    isOn = false;
+};
+
+function resume() {
+    console.log(displayTimeLeft)
+    stopBtn.innerHTML = 'stop';
+    isOn = true;
+};
+
+stopBtn.addEventListener('click', function() {
+    isOn ? stop() : resume();
+  }); */

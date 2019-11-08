@@ -3,13 +3,7 @@ function Stopwatch(elem) {
   var offset;
   var interval;
 
-  function update() {
-    if (this.isOn) {
-      time += delta();
-    }
-    
-    elem.textContent = timeFormatter(time);
-  }
+  this.isOn = false;
 
   function delta() {
     var now = Date.now();
@@ -42,6 +36,14 @@ function Stopwatch(elem) {
     return minutes + ' : ' + seconds + ' . ' + milliseconds;
   }
 
+  function update() {
+    if (this.isOn) {
+      time += delta();
+    }
+    
+    elem.textContent = timeFormatter(time);
+  }
+  
   this.start = function() {
     interval = setInterval(update.bind(this), 10);
     offset = Date.now();
@@ -58,6 +60,4 @@ function Stopwatch(elem) {
     time = 0;
     update();
   };
-
-  this.isOn = false;
 }
