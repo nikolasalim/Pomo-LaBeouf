@@ -35,13 +35,12 @@ function displayTimeLeft(seconds){
     const minutes = Math.floor(seconds / 60);
     const remainderSeconds = Math.floor(seconds % 60);
     const display = `${minutes > 10 ? minutes : '0' + minutes} : ${remainderSeconds > 9 ? remainderSeconds : '0' + remainderSeconds}`
-    document.getElementById("timer").innerHTML = display;
+    document.getElementById("timer").textContent = display;
     document.title = display;
 
     // alarm sound
     if (display === "00 : 00"){
         const sound = new Audio();
-        //REPLACE WITH A NEW SONG
         sound.src = "./resources/audio/alarm.wav"
         sound.play();
         document.title = 'you did it!';
@@ -59,7 +58,7 @@ function startTimer() {
     const seconds = this.id;
     timer(seconds)
     isOn = true;
-    stopBtn.innerHTML = 'stop';
+    stopBtn.textContent = 'stop';
     //startBtn.addEventListener('click', justDoItSounds.play())
 };
 
@@ -68,19 +67,19 @@ function startBreak() {
     timer(seconds)
     //startBtn.addEventListener('click', sound.play())
     isOn = true;
-    stopBtn.innerHTML = 'stop';
+    stopBtn.textContent = 'stop';
 };
 
 function stop() {
     clearInterval(countdown)
-    stopBtn.innerHTML = 'resume';
+    stopBtn.textContent = 'resume';
     isOn = false;
 };
 
 function resume() {
-    stopBtn.innerHTML = 'stop';
-    isOn = true;
-    timer(remaining)
+        stopBtn.textContent = 'stop';
+        isOn = true;
+        timer(remaining)
 };
 
 startBtn.addEventListener('click', startTimer)
@@ -106,6 +105,7 @@ longBreakBtn.addEventListener('click', startBreak)
   }); */
 
 stopBtn.addEventListener('click', function() {
+
     if (isOn){
         stop()
         function randomStopSounds(){
@@ -118,8 +118,15 @@ stopBtn.addEventListener('click', function() {
         StopSounds.src = './resources/audio/' + randomStopSounds()
         StopSounds.play();
     }
-    else {
-        resume();
+    else{
+        if(document.getElementById("timer").textContent === '25 : 00'){
+            return;
+        }
+        else{
+            resume();
+        }
+
+        //console.log('teste')
     }
   });
 
