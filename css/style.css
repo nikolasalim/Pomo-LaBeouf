@@ -8,7 +8,9 @@ body {
   display: flex;
   flex-direction: column;
   font-family: 'Archivo Black', sans-serif;
-  background-color: green;
+  background-image: none;
+  background-size: cover;
+  background-color: rgb(72, 185, 101);
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -62,18 +64,17 @@ button:hover{
 }
 
 #shia{
-  position: absolute;
+  position: relative;
   z-index: 0;
-  bottom: 0px;
-  height: auto;
+  justify-content: center;
   max-width: 100%;
   display: block;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
 }
 
 #shia-photo {
-  max-height: 600px;
+  max-height: 680px;
   margin-top: 0px;
 }
 

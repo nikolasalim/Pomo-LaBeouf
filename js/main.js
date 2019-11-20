@@ -140,27 +140,37 @@ function muteSound(){
 
 // changing background
 
+let allBackgrounds = ["url('./media/images/bgs/mountain.jpg')", "url('./media/images/bgs/party.jpg')", "url('./media/images/bgs/space.jpg')"]
 
-let allBackgrounds = ['rgb(0, 255, 0)', 'rgb(255, 0, 0)', 'rgb(0, 0, 255)']
 
 function changeBackground() {
     
+    let elem = document.querySelector('body');
+    let initialBg = getComputedStyle(elem).getPropertyValue('background-image');
+
+    document.body.style.backgroundImage = allBackgrounds.pop();
+    allBackgrounds.splice(0, 0, document.body.style.backgroundImage)
+
+    
+    /* BY ORDER:
+
+        document.body.style.backgroundColor = allBackgrounds.pop()
+        allBackgrounds.splice(0, 0, document.body.style.backgroundColor) */
+
+    
+    /* RANDOMIC:
+
     let randomIndex = Math.floor(Math.random() * allBackgrounds.length);        
     let randomBackground = allBackgrounds[randomIndex];
-
-    let elem = document.querySelector('body');
-    let initialBg = getComputedStyle(elem).getPropertyValue('background-color')
 
     while(randomBackground === initialBg){
         randomIndex = Math.floor(Math.random() * allBackgrounds.length)
         randomBackground = allBackgrounds[randomIndex]
     }
-    return document.body.style.backgroundColor = randomBackground;
+    return document.body.style.backgroundColor = randomBackground; */
 };
 
 backgroundBtn.addEventListener("click", changeBackground)
 
 
-/* const backgrounds = new Image()
-backgrounds.src = './media/images/bgs/' + changeBackground();
- */
+
