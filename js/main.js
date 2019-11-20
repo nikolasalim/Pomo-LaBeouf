@@ -2,11 +2,14 @@ let countdown;
 let isOn = false;
 let hasRunned = false;
 let remaining;
+let soundOn = true;
 
 const startBtn = document.getElementById("1500");
 const shortBreakBtn = document.getElementById("300");
 const longBreakBtn = document.getElementById("900");
 const stopBtn = document.getElementById("stop");
+const muteBtn = document.getElementById("mute-btn");
+const backgroundBtn = document.getElementById("bg-btn");
 
 // timer functionality
 
@@ -29,8 +32,6 @@ function timer(seconds){
         remaining = Math.round(secondsLeft)
 
     }, 1000)
-    console.log(`seconds on function timer: ${seconds}`)
-
 } 
 
 // timer display
@@ -44,17 +45,14 @@ function displayTimeLeft(seconds){
 
     // alarm sound
     if (display === "00 : 00"){
-        const sound = new Audio();
-        sound.src = "./media/audio/alarm.wav"
-        sound.play();
         document.title = 'you did it!';
+        if (soundOn){
+            const sound = new Audio();
+            sound.src = "./media/audio/alarm.wav"
+            sound.play();
+        }
     }
 }
-
-// audio references
-
-const sound1 = document.getElementById("sound1");
-
 
 // start, stop & resume buttons
 
@@ -63,7 +61,7 @@ function startTimer() {
     timer(seconds)
     isOn = true;
     hasRunned = true;
-    stopBtn.textContent = 'stop';
+    stopBtn.firstChild.textContent = 'stop';
 };
 
 function startBreak() {
@@ -71,17 +69,17 @@ function startBreak() {
     timer(seconds)
     isOn = true;
     hasRunned = true;
-    stopBtn.textContent = 'stop';
+    stopBtn.firstChild.textContent = 'stop';
 };
 
 function stop() {
     clearInterval(countdown)
-    stopBtn.textContent = 'resume';
+    stopBtn.firstChild.textContent = 'resume';
     isOn = false;
 };
 
 function resume() {
-    stopBtn.textContent = 'stop';
+    stopBtn.firstChild.textContent = 'stop';
     isOn = true;
     timer(remaining)
 };
@@ -94,10 +92,11 @@ startBtn.addEventListener('click', function(){
         const randomNum = Math.floor(Math.random() * allFiles.length)
         return allFiles[randomNum];
     };
-
-    const justDoItSounds = new Audio();
-    justDoItSounds.src = './media/audio/' + randomJustDoItSounds()
-    justDoItSounds.play();
+    if(soundOn){
+        const justDoItSounds = new Audio();
+        justDoItSounds.src = './media/audio/' + randomJustDoItSounds()
+        justDoItSounds.play();
+    }
 });
 
 shortBreakBtn.addEventListener('click', startBreak)
@@ -119,30 +118,49 @@ stopBtn.addEventListener('click', function() {
             return allFiles[randomNum];
         };
         
-        const StopSounds = new Audio();
-        StopSounds.src = './media/audio/' + randomStopSounds()
-        StopSounds.play();
+        if(soundOn){
+            const StopSounds = new Audio();
+            StopSounds.src = './media/audio/' + randomStopSounds()
+            StopSounds.play();
+        }
     }
     else{
         resume();
     }
   });
 
+// muting shia
 
+muteBtn.addEventListener("click", muteSound)
 
-
-/* const justDoItSounds = new Audio();
-//justDoItSounds.src = "./resources/audio/just-do-it-1.wav" // need to add something to target based on the name of each file, as in "intro to javascript audio effects" - 3:14
-justDoItSounds.src = './resources/audio/' + randomJustDoItSounds()
-console.log(justDoItSounds.src)
-
-function randomJustDoItSounds(){
-    const allJustDoItFiles = ["just-do-it-1.wav", "just-do-it-2.wav", "just-do-it-3.wav", "just-do-it-4.wav", "do-it.wav", "do-it-1.wav", "do-it-2.wav"]
-    const randomNum = Math.floor(Math.random() * allJustDoItFiles.length)
-    return allJustDoItFiles[randomNum];
+function muteSound(){
+    soundOn ? soundOn = false : soundOn = true;
+    soundOn ? muteBtn.src = "./media/images/sound-on-icon.png" : muteBtn.src = "./media/images/mute-icon.png";
 };
 
-randomJustDoItSounds() */
+// changing background
 
 
-const allStopFiles = ["not-gonna-stop-there.wav", "stop-giving-up.wav", "what-are-you-waiting"]
+let allBackgrounds = ['rgb(0, 255, 0)', 'rgb(255, 0, 0)', 'rgb(0, 0, 255)']
+
+function changeBackground() {
+    
+    let randomIndex = Math.floor(Math.random() * allBackgrounds.length);        
+    let randomBackground = allBackgrounds[randomIndex];
+
+    let elem = document.querySelector('body');
+    let initialBg = getComputedStyle(elem).getPropertyValue('background-color')
+
+    while(randomBackground === initialBg){
+        randomIndex = Math.floor(Math.random() * allBackgrounds.length)
+        randomBackground = allBackgrounds[randomIndex]
+    }
+    return document.body.style.backgroundColor = randomBackground;
+};
+
+backgroundBtn.addEventListener("click", changeBackground)
+
+
+/* const backgrounds = new Image()
+backgrounds.src = './media/images/bgs/' + changeBackground();
+ */
