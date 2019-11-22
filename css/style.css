@@ -94,6 +94,7 @@ button:hover{
   width: inherit;
   height: auto;
   top: 0;
+  left: 0;
   z-index: 3;
 }
 

@@ -2,14 +2,6 @@ let countdown;
 let isOn = false;
 let hasRunned = false;
 let remaining;
-let soundOn = true;
-
-const startBtn = document.getElementById("1500");
-const shortBreakBtn = document.getElementById("300");
-const longBreakBtn = document.getElementById("900");
-const stopBtn = document.getElementById("stop");
-const muteBtn = document.getElementById("mute-btn");
-const backgroundBtn = document.getElementById("bg-btn");
 
 // timer functionality
 
@@ -55,6 +47,11 @@ function displayTimeLeft(seconds){
 }
 
 // start, stop & resume buttons
+
+const startBtn = document.getElementById("1500");
+const shortBreakBtn = document.getElementById("300");
+const longBreakBtn = document.getElementById("900");
+const stopBtn = document.getElementById("stop");
 
 function startTimer() {
     const seconds = this.id;
@@ -131,6 +128,9 @@ stopBtn.addEventListener('click', function() {
 
 // muting shia
 
+const muteBtn = document.getElementById("mute-btn");
+let soundOn = true;
+
 muteBtn.addEventListener("click", muteSound)
 
 function muteSound(){
@@ -139,6 +139,9 @@ function muteSound(){
 };
 
 // changing background
+
+const backgroundBtn = document.getElementById("bg-btn");
+backgroundBtn.addEventListener("click", changeBackground)
 
 let allBackgrounds = ["url('./media/images/bgs/mountain.jpg')", "url('./media/images/bgs/party.jpg')", "url('./media/images/bgs/space.jpg')"]
 
@@ -151,13 +154,11 @@ function changeBackground() {
     document.body.style.backgroundImage = allBackgrounds.pop();
     allBackgrounds.splice(0, 0, document.body.style.backgroundImage)
 
-    
     /* BY ORDER:
 
         document.body.style.backgroundColor = allBackgrounds.pop()
         allBackgrounds.splice(0, 0, document.body.style.backgroundColor) */
 
-    
     /* RANDOMIC:
 
     let randomIndex = Math.floor(Math.random() * allBackgrounds.length);        
@@ -170,7 +171,54 @@ function changeBackground() {
     return document.body.style.backgroundColor = randomBackground; */
 };
 
-backgroundBtn.addEventListener("click", changeBackground)
+// follow the cursor
+
+let eyesElement = document.getElementById('eyes');
+let eyesTop = getComputedStyle(eyesElement).getPropertyValue('top')
+let eyesLeft = getComputedStyle(eyesElement).getPropertyValue('left')
+
+console.log(eyesElement.style.left)
+console.log(eyesElement.style.top)
+
+/* document.onmousemove = function () {
+    let x = event.clientX * 5 / window.innerWidth + "px";
+    let y = event.clientY * 5 / window.innerHeight + "px";
+
+    eyesElement.style.left = x;
+    eyesElement.style.top = y;
+    
+    console.log(`top: ${eyesElement.style.top}`)
+    console.log(`left: ${eyesElement.style.left}`)
+
+    
+    
+} */
+
+/* function movingEyes () {
+    let x = event.clientX * 100 / window.innerWidth + "px";
+    let y = event.clientY * 100 / window.innerHeight + "px";
+
+    eyesLeft = x;
+    eyesTop = y;
+
+    for (i = 0; i < 2; i++){
+        //console.log(i)
+        //console.log(eyesElement)
+        //console.log(`eyesElement[i]: ${eyesElement[i]}`)
+        
+        //eyes[i].style.left = x;
+        //eyes[i].style.top = y;
+
+        //console.log(`eyes[i].style.left: ${eyes[i].style.left}`)
+        //console.log(`eyes[i].style.top: ${eyes[i].style.top}`)
+    }
+
+    
+};
+
+document.addEventListener('mousemove', movingEyes) */
+
+
 
 
 
