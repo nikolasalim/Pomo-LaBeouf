@@ -173,26 +173,20 @@ function changeBackground() {
 
 // follow the cursor
 
-let eyesElement = document.getElementById('eyes');
-let eyesTop = getComputedStyle(eyesElement).getPropertyValue('top')
-let eyesLeft = getComputedStyle(eyesElement).getPropertyValue('left')
+let eyesElement = document.getElementsByClassName("eyeballs");
 
-console.log(eyesElement.style.left)
-console.log(eyesElement.style.top)
+document.onmousemove = function () {
+    let x = event.clientX * 100 / window.innerWidth + "%";
+    let y = event.clientY * 100 / window.innerHeight + "%";
 
-/* document.onmousemove = function () {
-    let x = event.clientX * 5 / window.innerWidth + "px";
-    let y = event.clientY * 5 / window.innerHeight + "px";
+    for(i = 0; i < 2; i++){
+ 
+        eyesElement[i].style.left = x;
+        eyesElement[i].style.top = y;
+        eyesElement[i].style.transform = "translate(-"+x+",-"+y+")";
+    }
 
-    eyesElement.style.left = x;
-    eyesElement.style.top = y;
-    
-    console.log(`top: ${eyesElement.style.top}`)
-    console.log(`left: ${eyesElement.style.left}`)
-
-    
-    
-} */
+}
 
 /* function movingEyes () {
     let x = event.clientX * 100 / window.innerWidth + "px";
