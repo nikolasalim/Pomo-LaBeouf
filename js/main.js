@@ -143,13 +143,12 @@ function muteSound(){
 const backgroundBtn = document.getElementById("bg-btn");
 backgroundBtn.addEventListener("click", changeBackground)
 
-let allBackgrounds = ["url('./media/images/bgs/mountain.jpg')", "url('./media/images/bgs/party.jpg')", "url('./media/images/bgs/space.jpg')"]
-
+let allBackgrounds = ["url('./media/images/bgs/ed.jpg')", "url('./media/images/bgs/haka.jpg')", "url('./media/images/bgs/mosh.jpg')", "url('./media/images/bgs/bodybuilders.jpg')", "url('./media/images/bgs/meerkats.jpg')", "url('./media/images/bgs/party.jpg')", "url('./media/images/bgs/wedding.jpg')", "url('./media/images/bgs/photogenic.jpg')", "url('./media/images/bgs/space.jpg')", "url('./media/images/bgs/bathroom.jpg')"]
 
 function changeBackground() {
     
-    let elem = document.querySelector('body');
-    let initialBg = getComputedStyle(elem).getPropertyValue('background-image');
+   /*  let elem = document.querySelector('body');
+    let initialBg = getComputedStyle(elem).getPropertyValue('background-image'); */
 
     document.body.style.backgroundImage = allBackgrounds.pop();
     allBackgrounds.splice(0, 0, document.body.style.backgroundImage)
@@ -185,32 +184,7 @@ document.onmousemove = function () {
         eyesElement[i].style.top = y;
         eyesElement[i].style.transform = "translate(-"+x+",-"+y+")";
     }
-
-}
-
-/* function movingEyes () {
-    let x = event.clientX * 100 / window.innerWidth + "px";
-    let y = event.clientY * 100 / window.innerHeight + "px";
-
-    eyesLeft = x;
-    eyesTop = y;
-
-    for (i = 0; i < 2; i++){
-        //console.log(i)
-        //console.log(eyesElement)
-        //console.log(`eyesElement[i]: ${eyesElement[i]}`)
-        
-        //eyes[i].style.left = x;
-        //eyes[i].style.top = y;
-
-        //console.log(`eyes[i].style.left: ${eyes[i].style.left}`)
-        //console.log(`eyes[i].style.top: ${eyes[i].style.top}`)
-    }
-
-    
 };
-
-document.addEventListener('mousemove', movingEyes) */
 
 
 
