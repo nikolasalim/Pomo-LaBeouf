@@ -59,6 +59,7 @@ button{
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
+  background-color: rgb(255, 255, 255);
 }
 
 button:hover{
@@ -83,6 +84,10 @@ button:hover{
 #mute{
   height: 100%;
   width: 100%;
+}
+
+#bg-btn-mob{
+  display: none;
 }
 
 #shia{
@@ -136,6 +141,10 @@ button:hover{
 }
 
 @media only screen and (max-width: 500px) {
+  body{
+    background-size: cover;
+    background-repeat: repeat-y;
+  }
   #timer {
     font-size: 5em;
   }
@@ -147,6 +156,12 @@ button:hover{
   }
   button p{
    font-size: 100%;
+  }
+  #bg-btn-mob{
+    display: block;
+  }
+  #bg-btn{
+    display: none;
   }
 }
 

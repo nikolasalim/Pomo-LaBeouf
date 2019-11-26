@@ -143,13 +143,10 @@ function muteSound(){
 const backgroundBtn = document.getElementById("bg-btn");
 backgroundBtn.addEventListener("click", changeBackground)
 
-let allBackgrounds = ["url('./media/images/bgs/ed.jpg')", "url('./media/images/bgs/haka.jpg')", "url('./media/images/bgs/mosh.jpg')", "url('./media/images/bgs/bodybuilders.jpg')", "url('./media/images/bgs/meerkats.jpg')", "url('./media/images/bgs/party.jpg')", "url('./media/images/bgs/wedding.jpg')", "url('./media/images/bgs/photogenic.jpg')", "url('./media/images/bgs/space.jpg')", "url('./media/images/bgs/bathroom.jpg')"]
+let allBackgrounds = ["url('./media/images/bgs/ed.jpg')", "url('./media/images/bgs/haka.jpg')", "url('./media/images/bgs/cat.jpg')", "url('./media/images/bgs/mosh.jpg')", "url('./media/images/bgs/bodybuilders.jpg')", "url('./media/images/bgs/meerkats.jpg')", "url('./media/images/bgs/party.jpg')", "url('./media/images/bgs/wedding.jpg')", "url('./media/images/bgs/photogenic.jpg')", "url('./media/images/bgs/space.jpg')", "url('./media/images/bgs/bathroom.jpg')"]
 
 function changeBackground() {
     
-   /*  let elem = document.querySelector('body');
-    let initialBg = getComputedStyle(elem).getPropertyValue('background-image'); */
-
     document.body.style.backgroundImage = allBackgrounds.pop();
     allBackgrounds.splice(0, 0, document.body.style.backgroundImage)
 
@@ -168,6 +165,18 @@ function changeBackground() {
         randomBackground = allBackgrounds[randomIndex]
     }
     return document.body.style.backgroundColor = randomBackground; */
+};
+
+// chancing background for mobile
+
+const backgroundBtnMob = document.getElementById("bg-btn-mob");
+backgroundBtnMob.addEventListener("click", changeBackground)
+
+let allBackgroundsMob = ["url('./media/images/bgs-mob/ed.jpg')", "url('./media/images/bgs-mob/cat.jpg')", "url('./media/images/bgs-mob/eiffel.jpg')", "url('./media/images/bgs-mob/meerkats.jpg')", "url('./media/images/bgs-mob/space.jpg')"]
+
+function changeBackground() {
+    document.body.style.backgroundImage = allBackgroundsMob.pop();
+    allBackgroundsMob.splice(0, 0, document.body.style.backgroundImage)
 };
 
 // follow the cursor
