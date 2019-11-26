@@ -170,11 +170,11 @@ function changeBackground() {
 // chancing background for mobile
 
 const backgroundBtnMob = document.getElementById("bg-btn-mob");
-backgroundBtnMob.addEventListener("click", changeBackground)
+backgroundBtnMob.addEventListener("click", changeBackgroundMob)
 
 let allBackgroundsMob = ["url('./media/images/bgs-mob/ed.jpg')", "url('./media/images/bgs-mob/cat.jpg')", "url('./media/images/bgs-mob/eiffel.jpg')", "url('./media/images/bgs-mob/meerkats.jpg')", "url('./media/images/bgs-mob/space.jpg')"]
 
-function changeBackground() {
+function changeBackgroundMob() {
     document.body.style.backgroundImage = allBackgroundsMob.pop();
     allBackgroundsMob.splice(0, 0, document.body.style.backgroundImage)
 };
