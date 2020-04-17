@@ -22,8 +22,8 @@ I'm a big fan of his "JUST DO IT" ~~inspirational speech~~ meme, and I strongly 
 To check out the currently deployed version, [click here.](https://nikolasalim.github.io/Pomo-LaBeouf/)
 
 ![timer-gif](https://github.com/nikolasalim/Pomo-LaBeouf/blob/master/media/demo/timer.gif)
-![cursor-gif](https://github.com/nikolasalim/Pomo-LaBeouf/blob/master/media/demo/cursor.gif)
 ![bg-gif](https://github.com/nikolasalim/Pomo-LaBeouf/blob/master/media/demo/bg.gif)
+![cursor-gif](https://github.com/nikolasalim/Pomo-LaBeouf/blob/master/media/demo/cursor.gif)
 
 # Goals
 
